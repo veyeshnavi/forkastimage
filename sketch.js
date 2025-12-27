@@ -66,7 +66,7 @@ function draw() {
         loadRecipeDatabase();
 
         let btn = createButton('Generate QR of Canvas');
-        btn.position(600, 575);
+        btn.position(575, 520);
         btn.style('z-index', '5');
         btn.mousePressed(generateQR);
 
@@ -423,7 +423,7 @@ function showQR(url) {
     new QRious({
         element: qrCanvas,
         value: url,
-        size: 50
+        size: 200
     });
 }
 
