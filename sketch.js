@@ -48,7 +48,7 @@ function draw() {
 
         inputCategory = CrossScriptVars.wakeTime;
 
-        canvas = createCanvas(windowWidth, windowHeight * 3);
+        canvas = createCanvas(windowWidth, windowHeight * 1);
         canvas.style('z-index', '-1');
         angleMode(RADIANS);
         frameRate(60);
