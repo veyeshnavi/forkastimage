@@ -566,12 +566,21 @@ let welcomeImg;
 
         function mousePressed() {
             switch (gameState) {
-                case WELCOME:
-                    if (mouseX > width / 2 - 80 && mouseX < width / 2 + 80 &&
-                        mouseY > height / 2 + 40 && mouseY < height / 2 + 100) {
-                        gameState = LOCATION_SELECT;
-                    }
-                    break;
+              case WELCOME:
+    let btnW = width * 0.28;
+    let btnH = height * 0.08;
+    let btnX = width / 2 - btnW / 2;
+    let btnY = height * 0.7;
+
+    if (
+        mouseX > btnX &&
+        mouseX < btnX + btnW &&
+        mouseY > btnY &&
+        mouseY < btnY + btnH
+    ) {
+        gameState = LOCATION_SELECT;
+    }
+    break;
 
                 case LOCATION_SELECT:
                     const locations = ['Bengaluru', 'Kolkata', 'Hyderabad', 'Delhi'];
