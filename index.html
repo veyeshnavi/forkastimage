@@ -204,37 +204,33 @@
         }
 
         let myFont;
-
+let welcomeImg;
         function preload() {
             myFont = loadFont('Jersey25-Regular.ttf'); // Make sure the file is in your project directory
+            welcomeImg = loadImage('forkast-cover.png');
         }
 
-        function drawWelcomeScreen() {
-            noStroke();
-            fill(0);
-            textAlign(CENTER, CENTER);
-            textSize(32);
-            textStyle(NORMAL);
-            textFont(myFont);
-        
-            text('Interactive Recipe Generator', width / 2, height / 2 - 100);
+       function drawWelcomeScreen() {
+    // Draw full-screen image
+    imageMode(CORNER);
+    image(welcomeImg, 0, 0, width, height);
 
-            
-            fill(251, 179, 41);
-            textAlign(CENTER, CENTER);
-            textSize(52);
-            textStyle(NORMAL);
-            textFont(myFont);
+    // CTA button
+    let btnW = width * 0.28;
+    let btnH = height * 0.08;
+    let btnX = width / 2 - btnW / 2;
+    let btnY = height * 0.7;
 
-            text('FORKAST', width / 2, height / 2 - 164);
-           
-            fill(0);
-            textSize(24);
-            textStyle(NORMAL);
-            text('Discover your perfect recipe and visualize your food journey!', width / 2, height / 2 - 60);
+    noStroke();
+    fill(181, 216, 51); // green accent
+    rect(btnX, btnY, btnW, btnH, 14);
 
-            // Start button
-            drawButton(width / 2 - 80, height / 2 + 40, 160, 60, 'Start Journey', color(251, 179, 41));
+    // Button text
+    fill(0);
+    textAlign(CENTER, CENTER);
+    textFont(myFont);
+    textSize(btnH * 0.45);
+    text('TAP TO START', btnX + btnW / 2, btnY + btnH / 2);
         }
 
         function drawLocationScreen() {
@@ -319,13 +315,13 @@
         function drawIngredientsScreen() {
             noStroke();
 
-             fill(0);
+            fill(0);
             textAlign(CENTER, CENTER);
             textSize(36);
             textStyle(NORMAL);
             text('Choose any 2 Ingredients', width / 2, 80);
 
-            fill(255,0,0);
+fill(255,0,0);
             textSize(18);
             text('LONG PRESS to select', width / 2, 110);
 
@@ -574,12 +570,21 @@
 
         function mousePressed() {
             switch (gameState) {
-                case WELCOME:
-                    if (mouseX > width / 2 - 80 && mouseX < width / 2 + 80 &&
-                        mouseY > height / 2 + 40 && mouseY < height / 2 + 100) {
-                        gameState = LOCATION_SELECT;
-                    }
-                    break;
+              case WELCOME:
+    let btnW = width * 0.28;
+    let btnH = height * 0.08;
+    let btnX = width / 2 - btnW / 2;
+    let btnY = height * 0.7;
+
+    if (
+        mouseX > btnX &&
+        mouseX < btnX + btnW &&
+        mouseY > btnY &&
+        mouseY < btnY + btnH
+    ) {
+        gameState = LOCATION_SELECT;
+    }
+    break;
 
                 case LOCATION_SELECT:
                     const locations = ['Bengaluru', 'Kolkata', 'Hyderabad', 'Delhi'];
